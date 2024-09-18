@@ -15,8 +15,6 @@ if [ ! -d "$HOME/.dotfiles/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k-media.git $HOME/downloads/powerlevel10k-media
   cp $HOME/downloads/powerlevel10k-media/*.ttf $HOME/Library/Fonts
 
-  # TODO: Need to patch the fonts inside the terminals. Since this script only sets up wezterm, that's the only one
-
   # And clean up
   rm -rf $HOME/downloads/powerlevel10k-media
 
