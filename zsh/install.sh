@@ -20,3 +20,7 @@ if [ ! -d "$HOME/.dotfiles/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
 
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.dotfiles/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
+
+if [ ! -d "$HOME/.dotfiles/.oh-my-zsh/custom/plugins/you-should-use" ]; then
+  git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $HOME/.dotfiles/.oh-my-zsh/custom/plugins/you-should-use
+fi
