@@ -1,0 +1,57 @@
+# Local/private config goes in the include
+
+
+[include]
+        path = ~/.gitconfig.local
+[user]
+        name = "Samuel Huff"
+        email = "samuel.huff@ayahealthcare.com"
+[core]
+        hooksPath = ~/.config/git/hooks
+        editor = vim
+        excludesfile = ~/.gitignore
+[diff]
+        tool = default-difftool
+[difftool "default-difftool"]
+        cmd = code --wait --new-window --diff $LOCAL $REMOTE
+[filter "lfs"]
+        required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+[alias]
+        co = checkout
+        st = status
+        br = branch
+        trim = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
+    # Checkout a new branch with the Aya standard branch name
+        cnb = "!f() { d=$(date +'%Y%m%s'); git checkout -b "users/ayaSamuelHuff/$(date +'%Y%m%d')_${1^^}"; }; f"
+        # Checkout an existing branch that matches the supplied name pattern.
+        cob = "!f() { git checkout $(git branch | grep $1 -i); }; f"
+        # Delete an existing branch that matches the supplied name pattern.
+        del = "!f() { git branch -D $(git branch | grep $1 -i); }; f"
+        # Prettier logging for git commits
+        ls= !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit
+        # Prettier logging for branches
+    lsbr = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+    # Print all aliases
+    alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ $(printf \"\\043\")--\\>\\ / | column -t -s $(printf \"\\043\") | sort -k 1
+    # Update the current branch with main
+    up = !git pull origin main:main
+    # Update the current branch with main and stash all pending changes
+    ups = !git pull --autostash origin main:main
+[push]
+        default = current
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[apply]
+        whitespace = nowarn
+[mergetool]
+        keepBackup = false
+[help]
+        autocorrect = 1
+[init]
+	defaultBranch = main
