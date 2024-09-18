@@ -1,11 +1,6 @@
 # Local/private config goes in the include
-
-
 [include]
         path = ~/.gitconfig.local
-[user]
-        name = "Samuel Huff"
-        email = "samuel.huff@ayahealthcare.com"
 [core]
         hooksPath = ~/.config/git/hooks
         editor = vim
@@ -23,8 +18,9 @@
         co = checkout
         st = status
         br = branch
+        # Delete branches already merged into main
         trim = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
-    # Checkout a new branch with the Aya standard branch name
+        # Checkout a new branch with the Aya standard branch name
         cnb = "!f() { d=$(date +'%Y%m%s'); git checkout -b "users/ayaSamuelHuff/$(date +'%Y%m%d')_${1^^}"; }; f"
         # Checkout an existing branch that matches the supplied name pattern.
         cob = "!f() { git checkout $(git branch | grep $1 -i); }; f"
@@ -33,13 +29,13 @@
         # Prettier logging for git commits
         ls= !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit
         # Prettier logging for branches
-    lsbr = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
-    # Print all aliases
-    alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ $(printf \"\\043\")--\\>\\ / | column -t -s $(printf \"\\043\") | sort -k 1
-    # Update the current branch with main
-    up = !git pull origin main:main
-    # Update the current branch with main and stash all pending changes
-    ups = !git pull --autostash origin main:main
+        lsbr = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+        # Print all aliases
+        alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ $(printf \"\\043\")--\\>\\ / | column -t -s $(printf \"\\043\") | sort -k 1
+        # Update the current branch with main
+        up = !git pull origin main:main
+        # Update the current branch with main and stash all pending changes
+        ups = !git pull --autostash origin main:main
 [push]
         default = current
 [color]
