@@ -137,6 +137,8 @@ install_dotfiles () {
   done
 }
 
+git submodule update --init
+
 setup_gitconfig
 install_dotfiles
 
