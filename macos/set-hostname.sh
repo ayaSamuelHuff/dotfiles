@@ -2,7 +2,7 @@
 #
 # This corrects a pain point with macOS where if you bounce
 # between wireless and wired connections, macOS will suddenly throw up its hands
-# and add a random-ass number to your hostname. Do it a couple times and you're
+# and add a random number to your hostname. Do it a couple times and you're
 # in like, the thousands appended to your hostname, which makes you look like a
 # chump when your machine is called "incredible-programmer-9390028", like
 # you're behind 9,390,027 other better programmers before you. Sheesh.
