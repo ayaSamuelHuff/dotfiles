@@ -22,42 +22,42 @@ local function toggle_telescope(harpoon_files)
 end
 
 wk.add({
-    { "<leader>f", group = "Quick Files" },
-    { "<leader>fa", desc = "add" },
-    { "<leader>fv", desc = "Open harpoon window" }, 
-    { "<leader>ff", desc = "Open jump list" },
-    { "<leader>fk",  desc = "previous" },
-    { "<leader>fj", desc =  "next" },
-    { "<leader>fu",  desc =  "Select 1" },
-    { "<leader>fi",  desc =  "Select 2" },
-    { "<leader>fo",  desc =  "Select 3" },
-    { "<leader>fp",  desc =  "Select 4" }, 
+    { "<leader>h", group = "Harpoon" },
+    { "<leader>ha", desc = "Add File" },
+    { "<leader>hv", desc = "Open harpoon window" }, 
+    { "<leader>hf", desc = "Open jump list" },
+    { "<leader>hk",  desc = "Previous" },
+    { "<leader>hj", desc =  "Next" },
+    { "<leader>hu",  desc =  "Select 1" },
+    { "<leader>hi",  desc =  "Select 2" },
+    { "<leader>ho",  desc =  "Select 3" },
+    { "<leader>hp",  desc =  "Select 4" }, 
 }, {mode = 'n', prefix = "<leader>" })
 
-vim.keymap.set('n', '<leader>fa', function()
+vim.keymap.set('n', '<leader>ha', function()
     harpoon:list():add()
 end)
-vim.keymap.set('n', '<leader>fv', function() 
+vim.keymap.set('n', '<leader>hv', function() 
     toggle_telescope(harpoon:list()) 
 end)
-vim.keymap.set('n', '<leader>ff', function()
+vim.keymap.set('n', '<leader>hf', function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
-vim.keymap.set('n', '<leader>fk', function()
+vim.keymap.set('n', '<leader>hk', function()
     harpoon:list():prev()
 end)
-vim.keymap.set('n', '<leader>fj', function()
+vim.keymap.set('n', '<leader>hj', function()
     harpoon:list():next()
 end)
-vim.keymap.set('n', '<leader>fu', function()
+vim.keymap.set('n', '<leader>hu', function()
     harpoon:list():select(1)
 end)
-vim.keymap.set('n', '<leader>fi', function()
+vim.keymap.set('n', '<leader>hi', function()
     harpoon:list():select(2)
 end)
-vim.keymap.set('n', '<leader>fo', function()
+vim.keymap.set('n', '<leader>ho', function()
     harpoon:list():select(3)
 end)
-vim.keymap.set('n', '<leader>fp', function()
+vim.keymap.set('n', '<leader>hp', function()
     harpoon:list():select(4)
 end)
