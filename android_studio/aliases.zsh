@@ -1,0 +1,1 @@
+alias android="emulator -avd $(emulator -list-avds | grep -v INFO | head -n 1)"
